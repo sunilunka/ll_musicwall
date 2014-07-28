@@ -1,11 +1,21 @@
-<h3> This will be the submission page.</h3>
+<% if @song && @song.errors.any? %>
+  <div>
+    <strong>Sorry, you can't submit a track until you fix this stuff:</strong>
+    <ul>
+      <% @song.errors.full_messages.each do |error| %>
+        <li><%= error %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
 
 <form method="post" action="/upload">
   <label>Song Title</label>
-  <input type="text" name="songtitle" required>
+  <input type="text" name="songtitle">
   <br>
   <label>Author</label>
-  <input type="text" name="author" required>
+  <input type="text" name="author">
   <br>
   <label>Link</label>
   <input type="text" name="url">

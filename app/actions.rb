@@ -4,6 +4,7 @@ get '/' do
 end
 
 get '/upload' do
+  @song = Song.new
   erb :'upload/index'
 end
 
