@@ -39,3 +39,17 @@ post '/user' do
     erb :'user/index'
   end
 end
+
+get '/user/login' do
+  erb :'user/login'
+end
+
+post '/user/login' do
+  @user = User.where(email: params[:email], password: params[:password])
+    if @user[0].nil?
+      erb :'user/login'
+    else
+      redirect '/'
+    end
+end
+
