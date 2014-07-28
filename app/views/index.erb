@@ -1,5 +1,13 @@
-<h1>Home Page</h1>
+<h1>Music Wall V1</h1>
 
-<p>Page will show the wall of songs.</p>
+<% Song.all.each do |song| %>
+  <div class="song"> 
+    <h3>Song: <%= song.songtitle %></h3>
+    <h4> Band: <%= song.author %></h4>
+    <p> Link: <%= song.url %></p>
+  </div>
+<% end %>
+
+
 
 <a href="/upload">Submit a new song to the wall.</a>

@@ -13,6 +13,10 @@ post '/upload' do
       author: params[:author],
       url: params[:url]
     )
-  redirect '/'
+  if @song.save
+    redirect '/'
+  else
+    erb :'/upload'
+  end
 end
 
