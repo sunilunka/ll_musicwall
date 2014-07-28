@@ -9,7 +9,10 @@ end
 
 post '/upload' do
   @song = Song.new(
-      
+      songtitle: params[:songtitle],
+      author: params[:author],
+      url: params[:url]
     )
+  redirect '/'
 end
 
