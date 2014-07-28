@@ -49,7 +49,13 @@ post '/user/login' do
     if @user[0].nil?
       erb :'user/login'
     else
+      session['user'] = @user
       redirect '/'
     end
+end
+
+get '/user/logout' do
+  session.clear
+  redirect '/'
 end
 

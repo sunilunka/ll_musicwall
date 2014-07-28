@@ -1,7 +1,14 @@
 <h1>Music Wall V1</h1>
-<a href="/user">Sign up</a>
 <a href="/user/login">Login</a>
-<p> </p>
+
+<% if session['user'] != nil %>
+  <p><%= session['user'][0].username %></p>
+  <a href="user/logout">Logout</a>
+  <a href="/upload">Submit a new song to the wall.</a>
+<% else %>
+  <p> Guest </p>
+  <a href="/user">Sign up</a><p> to upload a song and vote!</p>
+<% end %>
 <% Song.all.each do |song| %>
   <div class="song"> 
     <h3>Song: <%= song.songtitle %></h3>
@@ -12,4 +19,4 @@
 
 
 
-<a href="/upload">Submit a new song to the wall.</a>
+
