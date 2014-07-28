@@ -17,7 +17,25 @@ post '/upload' do
   if @song.save
     redirect '/'
   else
-    erb :'/upload/index'
+    erb :'upload/index'
   end
 end
 
+get '/user' do
+  @user = User.new
+  erb :'user/index'
+end
+
+post '/user' do
+  @user = User.new(
+    username: params[:username], 
+    email: params[:email],
+    password: params[:password]
+
+    )
+  if @user.save
+    redirect '/'
+  else
+    erb :'user/index'
+  end
+end
