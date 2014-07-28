@@ -16,7 +16,7 @@ post '/upload' do
   if @song.save
     redirect '/'
   else
-    erb :'/upload'
+    erb :'/upload/index'
   end
 end
 
