@@ -12,7 +12,8 @@ post '/upload' do
   @song = Song.new(
       songtitle: params[:songtitle],
       author: params[:author],
-      url: params[:url]
+      url: params[:url],
+      user_id: session['user'][0].id
     )
   if @song.save
     redirect '/'
@@ -58,4 +59,13 @@ get '/user/logout' do
   session.clear
   redirect '/'
 end
+
+get 'upvote/' do
+  erb :index
+end
+
+post 'upvote/' do
+  @upvote = Upvote.create(song_id: , user_id: session['user'][0].id)
+end
+
 

@@ -10,12 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140728190838) do
+ActiveRecord::Schema.define(version: 20140728233728) do
 
   create_table "songs", force: true do |t|
     t.string   "songtitle"
     t.string   "author"
     t.string   "url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+  end
+
+  create_table "upvotes", force: true do |t|
+    t.integer  "song_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

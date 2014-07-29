@@ -7,13 +7,18 @@
   <a href="/upload">Submit a new song to the wall.</a>
 <% else %>
   <p> Guest </p>
-  <a href="/user">Sign up</a><p> to upload a song and vote!</p>
+  <a href="/user">Sign up</a><span> to upload a song and vote!</span>
 <% end %>
 <% Song.all.each do |song| %>
   <div class="song"> 
     <h3>Song: <%= song.songtitle %></h3>
     <h4> Band: <%= song.author %></h4>
     <p> Link: <%= song.url %></p>
+    <% if session['user'] !=nil %>
+      <a href="/upvote">Upvote</a>
+    <% else %>
+      <p>Log in to vote</p>
+    <% end %>
   </div>
 <% end %>
 
