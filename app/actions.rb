@@ -1,15 +1,9 @@
 # Homepage (Root path)
 get '/' do
+  @songs = Song.all
+  @songs_ordered = @songs.sort_by{ |song| song.upvotes.count}.reverse 
   erb :index
-  # @song_object = Song.all.each do | song |
-  #      song = {
-  #         title => song.songtitle,
-  #         author => song.author
-  #         link => song.url
-  #         upvotes => Song.join
-
-  #      }   
-  #   end
+ 
 end
 
 post '/index' do

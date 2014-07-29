@@ -10,12 +10,12 @@
   <a href="/user">Sign up</a><span> to upload a song and vote!</span>
 <% end %>
 <p><%= @message %></p>
-<% Song.all.each do |song| %>
+<% @songs_ordered.each do |song| %>
   <div class="song"> 
     <h3>Song: <%= song.songtitle %></h3>
     <h4> Band: <%= song.author %></h4>
     <p> Link: <%= song.url %></p>
-    <p></p>
+    <p> <%= song.upvotes.count %> </p>
     <form method="post" action="/index">
       <input type="hidden" name="song_id" value="<%= song.id %>"> 
     </form>
