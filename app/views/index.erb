@@ -1,7 +1,7 @@
 <h1>Music Wall V1</h1>
 <a href="/user/login">Login</a>
 
-<% if session['user'] != nil %>
+<% if session['user'] %>
   <p><%= session['user'][0].username %></p>
   <a href="user/logout">Logout</a>
   <a href="/upload">Submit a new song to the wall.</a>
@@ -9,13 +9,21 @@
   <p> Guest </p>
   <a href="/user">Sign up</a><span> to upload a song and vote!</span>
 <% end %>
+<p><%= @message %></p>
 <% Song.all.each do |song| %>
   <div class="song"> 
     <h3>Song: <%= song.songtitle %></h3>
     <h4> Band: <%= song.author %></h4>
     <p> Link: <%= song.url %></p>
-    <% if session['user'] !=nil %>
-      <a href="/upvote">Upvote</a>
+    <p></p>
+    <form method="post" action="/index">
+      <input type="hidden" name="song_id" value="<%= song.id %>"> 
+    </form>
+    <% if session['user'] %>
+      <form method="post" action="/index">
+        <input type="submit" name="upvote" value="Upvote">
+        <input type="hidden" name="song_id" value="<%= song.id %>">
+      </form>
     <% else %>
       <p>Log in to vote</p>
     <% end %>
